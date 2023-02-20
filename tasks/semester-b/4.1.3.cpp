@@ -25,7 +25,7 @@ double dfn_bac(double h,double x) // backward
 
 double dfn_cen(double h,double x)
 {
-    return (f(x+h)-f(x-h))/(2*h); // using the centered difference method
+    return (f(x+h)-f(x-h))/(2*h); // using the centred difference method
 }						    	//shown in equation 6.
 
 int main()
@@ -36,10 +36,10 @@ int main()
     double diff;
     // Calculate the percentage of difference
     cout << "h: " << h << "\n";
-    cout << "Percentage difference between:\t" << 100*(dfn_cen(h,x)- dfana(x))/dfana(x) << "\n";
-    cout << "Forward difference:\t\t" << dfn_for(h,x) << "\n";
-    cout << "Backward difference:\t\t" << dfn_bac(h,x) << "\n";
-    cout << "Centered difference:\t\t" << dfn_cen(h,x) << "\n";
+    cout << "Percentage difference of 3-point derivative:\t" << 100*(dfn_cen(h,x)- dfana(x))/dfana(x) << "\n";
+    //cout << "Forward slop:\t\t" << dfn_for(h,x) << "\n";
+    //cout << "Backward slope:\t\t" << dfn_bac(h,x) << "\n";
+    cout << "3-point slope:\t\t" << dfn_cen(h,x) << "\n";
     cout << "cos(x):\t" << dfana(x) << "\n\n";
 
     int i = 0;
@@ -47,10 +47,10 @@ int main()
     {
         h/=2;
         cout << "h: " << h << "\n";
-        cout << "Percentage difference between:\t" << 100*(dfn_cen(h,x)- dfana(x))/dfana(x) << "\n";
-        cout << "Forward difference:\t\t" << dfn_for(h,x) << "\n";
-        cout << "Backward difference:\t\t" << dfn_bac(h,x) << "\n";
-        cout << "Centered difference:\t\t" << dfn_cen(h,x) << "\n";
+        cout << "Percentage difference of 3-point derivative:\t" << 100*(dfn_cen(h,x)- dfana(x))/dfana(x) << "\n";
+        //cout << "Forward difference:\t\t" << dfn_for(h,x) << "\n";
+        //cout << "Backward difference:\t\t" << dfn_bac(h,x) << "\n";
+        cout << "3-point slope:\t\t" << dfn_cen(h,x) << "\n";
         cout << "cos(x):\t" << dfana(x) << "\n\n";
     }
     return 0;
