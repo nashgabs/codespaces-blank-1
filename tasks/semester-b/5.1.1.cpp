@@ -30,14 +30,14 @@ double dfn_cen(double h,double x)
 
 double dfn_5p(double h,double x)
 {
-    return (f(x-(2*h))-f(x-(2*h))-8*(f(x-h))+8*(f(x+h)))/(12*h);
+    return (1/(12*h))*(f(x-(2*h))-(8*f(x-h))-f(x-(2*h))+(8*f(x+h)));
 }
 
 int main()
 {
     cout << setprecision(20);
-    double h=1;
-    double x=1.2;
+    double h=0.01;
+    double x=5;
     double diff;
     // Calculate the percentage of difference
     cout << "h: " << h << "\n";
