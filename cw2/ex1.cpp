@@ -13,8 +13,8 @@ double df(int x, char opt); // returns the result of function derivative 1,2 or 
 double dfn_5p(double x, char opt); // fourth-order taylor approximation over the 5 points
                                    // -2h, -h, 0, h, and 2h
 
-int openfile(fstream &file); // creates or opens output.csv and returns 0 for success and
-                             // 1 for fail
+int openfile(fstream &file, string name); // creates or opens output.csv and returns 0 for success and
+                                          // 1 for fail
 void writefile(fstream &file, double entry, bool newrow);
 
 int main()
@@ -34,8 +34,8 @@ int main()
                                                  // including point x = A this gives "divisions" number of steps
     cout << "STEP:\n\t>> " << step << endl;
 
-    fstream file;            // create filestream object
-    if (openfile(file) == 1) // open file to write
+    fstream file;                      // create filestream object
+    if (openfile(file, "output") == 1) // open file named output.csv to write
     {
         exit(1); // exit if fail
     }
@@ -122,13 +122,13 @@ double dfn_5p(double x, char opt)
     return (f(x - 2 * h, opt) - 8 * f(x - h, opt) + 8 * f(x + h, opt) - f(x + 2 * h, opt)) / (12 * h);
 }
 
-int openfile(fstream &file)
+int openfile(fstream &file, string name)
 {
-    file.open("output.csv", ios::out); // open file as output with name output.csv
+    file.open(name + ".csv", ios::out); // open file as output with name output.csv
     if (!file)
     {
-        cout << "Error: output.csv was not created."; // display error message
-        return 1;                                     // fail
+        cout << "Error: " << name << ".csv was not created."; // display error message
+        return 1;                                             // fail
     }
 
     else
